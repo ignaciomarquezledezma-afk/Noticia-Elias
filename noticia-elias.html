@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noticia Elías - Noticias positivas para niños</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #fed7aa 0%, #fef3c7 50%, #fce7f3 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(90deg, #fb923c, #fcd34d, #f472b6);
+            padding: 30px;
+            text-align: center;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 48px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            font-family: cursive;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .week-indicator {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .week-box {
+            display: inline-block;
+            background: white;
+            border-radius: 50px;
+            padding: 15px 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 4px solid #fed7aa;
+        }
+
+        .week-box p {
+            color: #b45309;
+            font-weight: bold;
+            font-size: 20px;
+            margin: 0;
+        }
+
+        article {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 25px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-bottom: 30px;
+            animation: slideInUp 0.6s ease-out;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header-emoji {
+            background: linear-gradient(90deg, #60a5fa, #a855f7);
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+        }
+
+        .article-content {
+            padding: 30px;
+        }
+
+        .article-content h2 {
+            font-size: 32px;
+            color: #111827;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .pais-badge {
+            display: inline-block;
+            background: #fef08a;
+            border-radius: 50px;
+            padding: 8px 15px;
+            margin-bottom: 20px;
+        }
+
+        .pais-badge p {
+            color: #991b1b;
+            font-weight: bold;
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .noticia-text {
+            color: #374151;
+            font-size: 18px;
+            line-height: 1.6;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .dato-curioso {
+            background: linear-gradient(90deg, #d1fae5, #ccfbf1);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 4px solid #10b981;
+        }
+
+        .dato-curioso p:first-child {
+            color: #065f46;
+            font-weight: bold;
+            margin: 0 0 10px 0;
+        }
+
+        .dato-curioso p:last-child {
+            color: #1f2937;
+            font-weight: 600;
+            font-size: 16px;
+            margin: 0;
+        }
+
+        .reflexion {
+            background: linear-gradient(90deg, #fce7f3, #fee2e2);
+            border-radius: 15px;
+            padding: 20px;
+            border: 4px solid #ec4899;
+        }
+
+        .reflexion p:first-child {
+            color: #831843;
+            font-weight: bold;
+            margin: 0 0 10px 0;
+        }
+
+        .reflexion p:last-child {
+            color: #1f2937;
+            font-weight: 600;
+            font-size: 16px;
+            margin: 0;
+            font-style: italic;
+        }
+
+        .controls {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            flex: 1;
+            min-width: 150px;
+            padding: 15px 20px;
+            border-radius: 15px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        .btn-prev {
+            background: linear-gradient(90deg, #f472b6, #fb7185);
+            color: white;
+        }
+
+        .btn-next {
+            background: linear-gradient(90deg, #60a5fa, #06b6d4);
+            color: white;
+        }
+
+        .control-info {
+            flex: 1;
+            min-width: 150px;
+            background: white;
+            border-radius: 15px;
+            padding: 15px 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 4px solid #fcd34d;
+            text-align: center;
+        }
+
+        .control-info p {
+            color: #b45309;
+            font-weight: bold;
+            font-size: 14px;
+            margin: 0;
+        }
+
+        footer {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        footer p {
+            color: #4b5563;
+            font-weight: 600;
+            margin: 10px 0;
+        }
+
+        footer .subtitle {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 36px;
+            }
+
+            .article-content h2 {
+                font-size: 24px;
+            }
+
+            .controls {
+                flex-direction: column;
+            }
+
+            button, .control-info {
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>✨ Noticia Elías ✨</h1>
+        <p>Las noticias más bonitas del mundo para niños</p>
+    </header>
+
+    <main>
+        <div class="week-indicator">
+            <div class="week-box">
+                <p>Semana <span id="weekNumber">1</span> del año</p>
+            </div>
+        </div>
+
+        <article id="noticia">
+            <div class="header-emoji" id="emoji"></div>
+            <div class="article-content">
+                <h2 id="titulo"></h2>
+                <div class="pais-badge">
+                    <p id="pais"></p>
+                </div>
+                <p class="noticia-text" id="contenido"></p>
+                <div class="dato-curioso">
+                    <p>💡 DATO CURIOSO</p>
+                    <p id="dato"></p>
+                </div>
+                <div class="reflexion">
+                    <p>🤔 PARA PENSAR</p>
+                    <p id="reflexion"></p>
+                </div>
+            </div>
+        </article>
+
+        <div class="controls">
+            <button class="btn-prev" onclick="semanaAnterior()">← Semana Anterior</button>
+            <div class="control-info">
+                <p>Navega por las<br>52 semanas del año</p>
+            </div>
+            <button class="btn-next" onclick="semanaSiguiente()">Semana Siguiente →</button>
+        </div>
+
+        <footer>
+            <p>Hecha con ❤️ para llenar de alegría a todos los Elías del mundo</p>
+            <p class="subtitle">💚 Todas las historias son reales y positivas</p>
+        </footer>
+    </main>
+
+    <script>
+        const noticias = [
+            { semana: 1, titulo: "🐸 Las ranas de cristal están de vuelta", pais: "📍 Costa Rica", contenido: "¡Buenas noticias! Los científicos encontraron más ranas de cristal en los bosques de Costa Rica. Estos animalitos tienen la piel tan transparente que puedes ver su corazón latiendo.", datoCurioso: "Puedes ver directamente el corazón de una rana de cristal latiendo.", reflexion: "¿Te gustaría tener la piel transparente?" },
+            { semana: 2, titulo: "🚀 Los niños inventan cohetes de papel", pais: "📍 España", contenido: "En Madrid, un grupo de estudiantes construyó cohetes de papel que voló 500 metros de alto. ¡Los inventores solo tenían 10 años!", datoCurioso: "Usaron solo papel, cartón y pegamento casero.", reflexion: "¿Qué inventarías tú?" },
+            { semana: 3, titulo: "🌈 El arcoíris más largo del mundo", pais: "📍 Irlanda", contenido: "Los científicos registraron un arcoíris que duró ¡2 horas y 58 minutos! La gente salió de sus casas para verlo.", datoCurioso: "El sol y la lluvia deben estar en el ángulo perfecto.", reflexion: "¿Cuál es tu color favorito?" },
+            { semana: 4, titulo: "🐢 Las tortugas marinas regresan", pais: "📍 Australia", contenido: "Mil tortugas bebé nacieron en las playas. Los voluntarios las ayudaron a llegar al océano. ¡Fue especial!", datoCurioso: "Las tortugas saben instintivamente hacia dónde ir.", reflexion: "¿Cómo crees que encuentran el camino?" },
+            { semana: 5, titulo: "🎨 Los niños pintan un mural gigante", pais: "📍 México", contenido: "200 niños pintaron juntos un mural de 100 metros. Dibujaron animales, flores y arcoíris.", datoCurioso: "Usaron 500 latas de pintura en 3 días.", reflexion: "¿Qué dibujarías?" },
+            { semana: 6, titulo: "🐬 Los delfines aprenden trucos nuevos", pais: "📍 Japón", contenido: "Los delfines inventaron un juego nuevo. Salpican agua a los visitantes para que rían.", datoCurioso: "Los delfines pueden reconocer su reflejo.", reflexion: "¿Los animales pueden reír?" },
+            { semana: 7, titulo: "🌻 Los girasoles limpian la tierra", pais: "📍 Ucrania", contenido: "Los científicos plantaron girasoles en lugares sucios. ¡Las flores salvan el planeta!", datoCurioso: "Los girasoles pueden limpiar tierra en meses.", reflexion: "¿Qué plantas tienes en casa?" },
+            { semana: 8, titulo: "⭐ Descubren una estrella nueva", pais: "📍 Chile", contenido: "Astrónomos encontraron una estrella que brilla de colores. Le pusieron un nombre especial: Elía.", datoCurioso: "La estrella está a 50 millones de kilómetros.", reflexion: "¿Te gustaría una estrella con tu nombre?" },
+            { semana: 9, titulo: "🦁 Los leones juegan en el refugio", pais: "📍 Kenya", contenido: "Los leones bebés rescatados ahora son amigos. Juegan, saltan y se acarician.", datoCurioso: "Los leones ronronean como los gatos.", reflexion: "¿Te gustaría acariciar un león?" },
+            { semana: 10, titulo: "🌊 Los océanos recuperan su color", pais: "📍 Maldivas", contenido: "Las aguas están más claras. Los arrecifes de coral se recuperan. ¡El océano está sanando!", datoCurioso: "Un arrecife puede tener 1000 especies diferentes.", reflexion: "¿Qué color tiene el agua profunda?" },
+            { semana: 11, titulo: "🎵 Los pájaros cantan canciones nuevas", pais: "📍 Noruega", contenido: "Los pájaros están creando música nueva cada día. Es como si tuvieran su propio concierto.", datoCurioso: "Algunos pájaros aprenden 1000 canciones.", reflexion: "¿Qué canción cantarías?" },
+            { semana: 12, titulo: "🍎 Los niños cultivan manzanas gigantes", pais: "📍 Japón", contenido: "Agricultores jóvenes cultivaron manzanas del tamaño de balones. ¡Podrías hacer 10 pasteles!", datoCurioso: "Tardaron 2 años para una sola manzana.", reflexion: "¿Qué fruta gigante quieres?" },
+            { semana: 13, titulo: "🦋 Migración de mariposas monarca", pais: "📍 México", contenido: "Millones de mariposas llegaron después de viajar 3000 km. El cielo se puso naranja.", datoCurioso: "Las mariposas pesan menos que una moneda.", reflexion: "¿Cómo encuentran el camino?" },
+            { semana: 14, titulo: "🎪 El circo sin animales en París", pais: "📍 Francia", contenido: "Un nuevo circo solo tiene acróbatas, payasos y magos. ¡Todos están felices!", datoCurioso: "Un acróbata puede volar 10 metros.", reflexion: "¿Te gustaría ser acróbata?" },
+            { semana: 15, titulo: "🌙 La Luna más grande que nunca", pais: "📍 Global", contenido: "La Luna está más grande y brillante que en 50 años. ¡Es mágica!", datoCurioso: "Se ve 14% más grande cuando está cerca.", reflexion: "¿Qué ves en la Luna?" },
+            { semana: 16, titulo: "🐻 Los osos aprenden a pescar", pais: "📍 Alaska", contenido: "Los osos bebés aprendieron a pescar salmón sin ayuda de mamá.", datoCurioso: "Un oso come 90 salmones en un día.", reflexion: "¿Tu comida favorita?" },
+            { semana: 17, titulo: "🌺 El bosque tropical se recupera", pais: "📍 Brasil", contenido: "Plantaron 1 millón de árboles en el Amazonas. ¡El bosque respira de nuevo!", datoCurioso: "Un árbol produce oxígeno para 10 personas.", reflexion: "¿Por qué los árboles son amigos?" },
+            { semana: 18, titulo: "🎮 Niños ganan torneo de videojuegos", pais: "📍 Corea del Sur", contenido: "Dos hermanos de 8 y 10 años ganaron el mundial. ¡Increíble!", datoCurioso: "Ganaron dinero para ayudar a 100 niños.", reflexion: "¿Tu videojuego favorito?" },
+            { semana: 19, titulo: "🌾 Cosecha de maíz récord", pais: "📍 Argentina", contenido: "Cosecharon la cantidad más grande en 100 años. ¡Maíz para todos!", datoCurioso: "El maíz es un alimento importante.", reflexion: "¿Cuántas formas de comer maíz conoces?" },
+            { semana: 20, titulo: "🎨 Un niño de 7 años es artista famoso", pais: "📍 Italia", contenido: "Liam pintó un cuadro que un museo compró por 50000 euros.", datoCurioso: "Pinta con los ojos cerrados.", reflexion: "¿Qué te gustaría pintar?" },
+            { semana: 21, titulo: "🦜 Los loros hablan 5 idiomas", pais: "📍 Perú", contenido: "Los loros se enseñan palabras unos a otros. ¡Increíble!", datoCurioso: "Un loro puede vivir 80 años.", reflexion: "¿Cuántos idiomas hablas?" },
+            { semana: 22, titulo: "🏖️ Las playas vuelven limpias", pais: "📍 España", contenido: "Voluntarios limpian cada semana. Los animales regresan. ¡Qué lindas!", datoCurioso: "Se limpian 50 toneladas de plástico.", reflexion: "¿Cómo cuidar las playas?" },
+            { semana: 23, titulo: "🎭 Un musical dirigido por niños", pais: "📍 Canadá", contenido: "Niños escribieron y dirigieron su propio musical en un teatro real.", datoCurioso: "Los actores adultos les obedecían.", reflexion: "¿Qué historia contarías?" },
+            { semana: 24, titulo: "🌈 Lluvia de meteoritos coloreados", pais: "📍 Nueva Zelanda", contenido: "Una lluvia de meteoritos brilló en muchos colores. ¡Fuegos artificiales del espacio!", datoCurioso: "Los meteoritos viajan a 200 km/hora.", reflexion: "¿A dónde viajarías?" },
+            { semana: 25, titulo: "🐠 Los acuarios abren gratis para niños", pais: "📍 Singapur", contenido: "Un acuario gigante decidió que niños menores de 12 años entren gratis.", datoCurioso: "Hay más de 10000 peces diferentes.", reflexion: "¿Tu pez favorito?" },
+            { semana: 26, titulo: "🚴 Niños ganan carrera de bicicletas", pais: "📍 Suiza", contenido: "Un grupo de niños ganó contra adultos profesionales en los Alpes.", datoCurioso: "Los niños tienen mejor equilibrio.", reflexion: "¿Tu deporte favorito?" },
+            { semana: 27, titulo: "🌻 El jardín de flores más grande", pais: "📍 Holanda", contenido: "Un pueblo plantó flores en cada rincón. ¡Es un arcoíris!", datoCurioso: "Hay 50 tipos de flores diferentes.", reflexion: "¿Tu flor favorita?" },
+            { semana: 28, titulo: "🎪 Circo acuático en Bangkok", pais: "📍 Tailandia", contenido: "Acróbatas saltan en el agua. El escenario está rodeado de piscinas.", datoCurioso: "Aguantan la respiración 3 minutos.", reflexion: "¿Te gustaría nadar en el circo?" },
+            { semana: 29, titulo: "🦅 Las águilas regresan a su hogar", pais: "📍 Escocia", contenido: "Las águilas que desaparecieron hace 200 años regresaron. ¡Un milagro!", datoCurioso: "Un águila vuela a 200 km/hora.", reflexion: "¿A dónde volarías?" },
+            { semana: 30, titulo: "🎵 Mil niños hacen un concierto benéfico", pais: "📍 Colombia", contenido: "Mil niños músicos tocaron juntos. La música fue hermosa. Todo fue para construir escuelas.", datoCurioso: "Los niños más pequeños tenían 5 años.", reflexion: "¿Qué instrumento aprendes?" },
+            { semana: 31, titulo: "🌲 El árbol más viejo celebra cumpleaños", pais: "📍 Suecia", contenido: "Un árbol celebró 9500 años. ¡El ser vivo más antiguo del planeta!", datoCurioso: "Nació cuando los mamuts vivían.", reflexion: "¿Cuánto tiempo vivirás?" },
+            { semana: 32, titulo: "🐢 Las tortugas gigantes encontradas", pais: "📍 Galápagos", contenido: "Encontraron tres tortugas que se creía estaban extintas. ¡Tienen 100 años!", datoCurioso: "Comen 40 kilos de plantas diarias.", reflexion: "¿Vivir 150 años como tortuga?" },
+            { semana: 33, titulo: "🎨 Los niños pintan un puente entero", pais: "📍 Portugal", contenido: "300 niños pintaron un puente en Lisboa. ¡Es un arcoíris!", datoCurioso: "Usaron 1000 latas de pintura.", reflexion: "¿Cómo decorarías un puente?" },
+            { semana: 34, titulo: "🦁 Safari nocturno para niños", pais: "📍 Sudáfrica", contenido: "Un safari funciona de noche. Los niños ven animales nocturnos. ¡Aventura!", datoCurioso: "Los búhos giran la cabeza 270 grados.", reflexion: "¿Qué animal nocturno ves?" },
+            { semana: 35, titulo: "🌊 Las ballenas cantan juntas", pais: "📍 Groenlandia", contenido: "Ballenas cantan en grupo. ¡Una sinfonía del océano!", datoCurioso: "Una ballena pesa como 30 elefantes.", reflexion: "¿Cómo suena el canto?" },
+            { semana: 36, titulo: "🚀 Cohete hecho por estudiantes", pais: "📍 India", contenido: "Estudiantes construyeron un cohete que subió 5 km. ¡El más alto de estudiantes!", datoCurioso: "Costó solo 50000 pesos con reciclaje.", reflexion: "¿Qué construirías?" },
+            { semana: 37, titulo: "🦋 El jardín de mariposas más grande", pais: "📍 Ecuador", contenido: "Un jardín tiene 10000 mariposas de 100 especies. ¡Sueño mágico!", datoCurioso: "Las mariposas viven 2-6 semanas pero viajan miles de km.", reflexion: "¿De qué color serías?" },
+            { semana: 38, titulo: "🎪 Teatro de marionetas histórico", pais: "📍 Dinamarca", contenido: "Un teatro de 300 años abrió nuevamente. ¡Historias mágicas!", datoCurioso: "Algunos títeres tienen 150 años.", reflexion: "¿Haces marionetas?" },
+            { semana: 39, titulo: "🌺 Las flores silvestres regresan", pais: "📍 Reino Unido", contenido: "Los campos están llenos de flores silvestres por primera vez en 50 años.", datoCurioso: "Una abeja visita 2 millones de flores para 1 kilo de miel.", reflexion: "¿Por qué las abejas son importantes?" },
+            { semana: 40, titulo: "🐠 Los peces aprenden a saltar", pais: "📍 Tailandia", contenido: "Los peces aprenden trucos. ¡Saltan a través de aros!", datoCurioso: "Los peces tienen mejor memoria.", reflexion: "¿Los peces como perros?" },
+            { semana: 41, titulo: "🎼 Banda sonora creada por niños", pais: "📍 Finlandia", contenido: "Niños crearon la música de una película. ¡Ganó un premio internacional!", datoCurioso: "Una niña de 9 años compuso la canción principal.", reflexion: "¿Qué música crearías?" },
+            { semana: 42, titulo: "🦊 Los zorros juegan en la nieve", pais: "📍 Rusia", contenido: "Filmaron zorros bebés jugando. ¡Adorables!", datoCurioso: "Un zorro salta 3 metros de altura.", reflexion: "¿Tu animal favorito?" },
+            { semana: 43, titulo: "🌈 Arcoíris de luz artificial", pais: "📍 Japón", contenido: "Un artista creó un arcoíris artificial con luz. ¡Brillante de noche!", datoCurioso: "Usan 500 luces LED.", reflexion: "¿Arte con luz?" },
+            { semana: 44, titulo: "🏃 Maratón inclusiva", pais: "📍 Bélgica", contenido: "Una niña en silla de ruedas ganó una maratón. ¡Campeona!", datoCurioso: "Entrenó 1 año.", reflexion: "¿Todos podemos lograr sueños?" },
+            { semana: 45, titulo: "🎨 Murales interactivos para niños", pais: "📍 Alemania", contenido: "Un artista creó muros que niños pueden pintar libremente. ¡Cambia cada semana!", datoCurioso: "1000 niños diferentes pintaron.", reflexion: "¿Qué pintarías?" },
+            { semana: 46, titulo: "🐢 Las tortugas usan luces para comunicarse", pais: "📍 Vietnam", contenido: "Las tortugas marinas usan luces especiales para hablar. ¡Increíble!", datoCurioso: "Las tortugas ven colores que nosotros no.", reflexion: "¿Cómo hablan los animales?" },
+            { semana: 47, titulo: "🌟 Lluvia de estrellas navideña", pais: "📍 Global", contenido: "La mejor lluvia de meteoritos del año. ¡Espectáculo perfecto!", datoCurioso: "Puedes ver 100 meteoritos por hora.", reflexion: "¿Tu deseo en una estrella?" },
+            { semana: 48, titulo: "🎄 Árbol de Navidad viviente", pais: "📍 Noruega", contenido: "Un árbol de 200 años se decora cada año. ¡Especial!", datoCurioso: "Puede vivir 500 años más.", reflexion: "¿Cómo decoras?" },
+            { semana: 49, titulo: "🎁 Niños reparten regalos a animales", pais: "📍 Chile", contenido: "Niños hicieron regalos para animales del refugio. ¡Muy felices!", datoCurioso: "Los monos abrían regalos como niños.", reflexion: "¿Qué regalo das?" },
+            { semana: 50, titulo: "🌙 Pueblo alpino se ilumina mágicamente", pais: "📍 Austria", contenido: "Un pueblo se ilumina completamente de noche. ¡Cuento de hadas!", datoCurioso: "10 millones de luces LED.", reflexion: "¿Cómo celebras?" },
+            { semana: 51, titulo: "🎆 Fuegos artificiales de luciérnagas", pais: "📍 Tailandia", contenido: "Miles de luciérnagas sincronizadas crean un espectáculo. ¡Mágico!", datoCurioso: "Las luciérnagas producen luz química.", reflexion: "¿Lo más mágico?" },
+            { semana: 52, titulo: "🎊 Fin de año con esperanza", pais: "📍 Global", contenido: "Niños escriben cartas con sueños para el próximo año. ¡En 10 años las leen!", datoCurioso: "Niños con sueños escritos logran 3 veces más.", reflexion: "¿Tu sueño más grande?" },
+        ];
+
+        let semanaActual = obtenerSemana();
+
+        function obtenerSemana() {
+            const ahora = new Date();
+            const inicio = new Date(ahora.getFullYear(), 0, 1);
+            const diferencia = ahora - inicio;
+            const unDia = 24 * 60 * 60 * 1000;
+            const dia = Math.floor(diferencia / unDia);
+            return Math.ceil((dia + inicio.getDay() + 1) / 7);
+        }
+
+        function mostrarNoticia() {
+            const noticia = noticias.find(n => n.semana === semanaActual) || noticias[0];
+            
+            document.getElementById('weekNumber').textContent = semanaActual;
+            document.getElementById('emoji').textContent = noticia.titulo.split(' ')[0];
+            document.getElementById('titulo').textContent = noticia.titulo;
+            document.getElementById('pais').textContent = noticia.pais;
+            document.getElementById('contenido').textContent = noticia.contenido;
+            document.getElementById('dato').textContent = noticia.datoCurioso;
+            document.getElementById('reflexion').textContent = noticia.reflexion;
+        }
+
+        function semanaAnterior() {
+            semanaActual = semanaActual === 1 ? 52 : semanaActual - 1;
+            mostrarNoticia();
+        }
+
+        function semanaSiguiente() {
+            semanaActual = semanaActual === 52 ? 1 : semanaActual + 1;
+            mostrarNoticia();
+        }
+
+        // Mostrar la noticia al cargar
+        mostrarNoticia();
+    </script>
+</body>
+</html>
